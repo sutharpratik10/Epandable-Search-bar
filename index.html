@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expandable Search</title>
+    <link href="css/main.scss" type="text/css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Search</h1>
+        <div class="serach-contain">
+            <img src="images/search.svg" alt="search" id="search-btn">
+            <input type="text" id="search" placeholder="">
+            <p id="tip">Hit Enter to search</p>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+        var msg = 'Search...';
+        var speed = 100;
+        
+        const searchBtn = document.getElementById('search-btn');
+        const search = document.getElementById('search');
+        const tip = document.getElementById('tip');
+        
+        searchBtn.addEventListener('click', () => {
+            search.style.width='80%';
+            search.style.paddingLeft='60px';
+            search.style.cursor='text';
+            search.focus();
+            typewriter();
+            
+        })  
+        function typewriter(){
+            if(i < msg.length){
+                message = search.getAttribute('placeholder') + msg.charAt(i);
+                search.setAttribute('placeholder',message);
+                i++;
+                setTimeout(typewriter, speed);
+            }
+        }
+        
+        search.addEventListener('keydown', () => {
+                                    tip.style.visibility='visible';
+                                    tip.style.opacity='1';
+                                })
+    </script>
+</body>
+</html>
